@@ -50,6 +50,12 @@ module.exports = {
       filename: 'styles.[contenthash].css'
     }),
     new CleanWebpackPlugin('dist'),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      title: 'Hello world',
+      meta: {
+        viewport: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0',
+        'X-UA-Compatible': 'ie=edge'
+      }
+    })
   ]
 };
