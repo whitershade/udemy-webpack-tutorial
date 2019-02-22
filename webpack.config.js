@@ -1,6 +1,6 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const MiniCssExtractPlugion = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -27,13 +27,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugion.loader, 'css-loader'
+          MiniCssExtractPlugin.loader, 'css-loader'
         ]
       },
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugion.loader, 'css-loader', 'sass-loader'
+          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
         ]
       },
       {
@@ -57,7 +57,7 @@ module.exports = {
   },
   plugins: [
     new UglifyJsPlugin(),
-    new MiniCssExtractPlugion({
+    new MiniCssExtractPlugin({
       filename: 'styles.[contenthash].css'
     }),
     new CleanWebpackPlugin('dist'),
