@@ -46,6 +46,12 @@ module.exports = {
             plugins: ['transform-class-properties']
           }
         }
+      },
+      {
+        test: /\.hbs$/,
+        use: [
+          'handlebars-loader'
+        ]
       }
     ]
   },
@@ -57,10 +63,8 @@ module.exports = {
     new CleanWebpackPlugin('dist'),
     new HtmlWebpackPlugin({
       title: 'Hello world',
-      meta: {
-        viewport: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0',
-        'X-UA-Compatible': 'ie=edge'
-      }
+      template: 'src/index.hbs',
+      description: 'Some description'
     })
   ]
 };
