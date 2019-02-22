@@ -1,11 +1,13 @@
 import './styles.scss';
 
 export default class HelloWorldButton {
+  buttonCssClass = 'hello-world-button';
+
   render() {
     const body = document.querySelector('body');
     const button = document.createElement('button');
     button.innerHTML = 'Hello world';
-    button.classList.add('hello-world-button');
+    button.classList.add(this.buttonCssClass);
 
     button.onclick = () => {
       const p = document.createElement('p');
