@@ -14,6 +14,11 @@ module.exports = {
     path: path.resolve(__dirname, './dist')
   },
   mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   module: {
     rules: [
       {
@@ -69,14 +74,14 @@ module.exports = {
       title: 'Hello world',
       description: 'Hello world',
       template: 'src/page-template.hbs',
-      chunks: ['hello-world']
+      chunks: ['hello-world', 'vendors~hello-world~rabbit']
     }),
     new HtmlWebpackPlugin({
       filename: 'rabbit.html',
       title: 'Rabbit',
       description: 'Rabbit',
       template: 'src/page-template.hbs',
-      chunks: ['rabbit']
+      chunks: ['rabbit', 'vendors~hello-world~rabbit']
     })
   ]
 };
