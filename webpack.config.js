@@ -1,13 +1,14 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugion = require('mini-css-extract-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
-    publicPath: 'dist/'
+    filename: 'bundle.[contenthash].js',
+    path: path.resolve(__dirname, './dist')
   },
   mode: 'none',
   module: {
@@ -46,7 +47,9 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin(),
     new MiniCssExtractPlugion({
-      filename: 'styles.css'
-    })
+      filename: 'styles.[contenthash].css'
+    }),
+    new CleanWebpackPlugin('dist'),
+    new HtmlWebpackPlugin()
   ]
 };
