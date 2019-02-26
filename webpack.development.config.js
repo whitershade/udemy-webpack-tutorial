@@ -3,9 +3,12 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    'hello-world': './src/hello-world.js',
+    'rabbit': './src/rabbit.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, './dist')
   },
   mode: 'development',
@@ -61,9 +64,18 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin('dist'),
     new HtmlWebpackPlugin({
+      filename: 'hello-world.html',
+      chunks: ['hello-world'],
       title: 'Hello world',
-      template: 'src/index.hbs',
-      description: 'Some description'
+      template: 'src/page-template.hbs',
+      description: 'Hello world'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'rabbit.html',
+      chunks: ['rabbit'],
+      title: 'Rabbit',
+      template: 'src/page-template.hbs',
+      description: 'Rabbit'
     })
   ]
 };
